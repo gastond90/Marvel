@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import {useDispatch} from "react-redux";
-import {getComicsByName, } from '../actions';
+import {getComicsByName, } from '../redux/actions';
 import "./Botones.css"
 
 export function SearchByComic () {

@@ -1,14 +1,12 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCharacters, orderByName, orderByRating, getComics, getEvents, getMovies } from "../actions";
 import { Link } from "react-router-dom";
+import { getCharacters, getComics, getEvents, getMovies } from '../redux/actions';
 import Card from "./Card";
 import { Paginated } from "./Paginated";
 import { SearchBar } from "./SearchBar";
-import  {SearchByComic} from "./SearchByComic";
-import  {SearchByEvent} from "./SearchByEvent";
-import { FilterByGenre } from "./FilterByGenre";
+import { SearchByComic } from "./SearchByComic";
+import { SearchByEvent } from "./SearchByEvent";
 import "./Home.css";
 import "./Botones.css";
 import "./Card.css";
@@ -43,7 +41,6 @@ export default function Home() {
     dispatch(getEvents());
     dispatch(getMovies());
   }, []);
-  
 
   /* function handleClick(e) {
     e.preventDefault();
@@ -70,7 +67,7 @@ export default function Home() {
     <div class="home">
       <div class="home">
         <div>
-          <h1></h1>
+          {/* <h1></h1> */}
         </div>
 
         {/*  <button onClick={mejorescinco}>Top 5</button> */}
@@ -90,14 +87,14 @@ export default function Home() {
         </div> */}
       </div>
       <div>
-          <SearchBar /> 
-        </div>
+        <SearchBar />
+      </div>
       <div>
-          <SearchByComic /> 
-        </div>
+        <SearchByComic />
+      </div>
       <div>
-          <SearchByEvent /> 
-        </div>
+        <SearchByEvent />
+      </div>
       <div>
         {/* <div class="content-select">
         <select onChange={(e) => handleFilterCreated(e)}>
@@ -152,7 +149,6 @@ export default function Home() {
             </div>
           ) : (
             currentVideogames &&
-            
             currentVideogames.map((e) => {
               return (
                 <div key={key++}>

@@ -1,4 +1,4 @@
-import { GET_CHARACTERS } from "./actionTypes";
+import { GET_CHARACTERS } from "./constants";
 
 const initialState = {
     // definir estado inicial

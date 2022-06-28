@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import {useDispatch} from "react-redux";
-import {getCharactersByName} from '../actions';
+import {getCharactersByName} from '../redux/actions';
 import "./Botones.css"
 
 export function SearchBar () {

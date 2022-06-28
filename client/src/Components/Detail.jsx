@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getDetail } from "../actions";
+import { getDetail } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import "./Detail.css";
 import "./Botones.css";
@@ -15,7 +15,7 @@ export function Detail() {
 
   useEffect(() => {
     dispatch(getDetail(id));
-  }, []);
+  }, [dispatch, id]);
 
   return (
     <div>

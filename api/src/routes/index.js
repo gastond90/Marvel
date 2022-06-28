@@ -225,5 +225,80 @@ router.get("/movies", async (req, res, next) => {
 });
 
 
+router.get("/events/:id", async (req, res, next) => {
+
+  try {
+    const { id } = req.params;
+
+    const foundInApi = await axios.get(
+      `https://gateway.marvel.com:443/v1/public/events/${id}?&ts=1000&apikey=d90d6140617c322226c93ba1f1dd331b&hash=41b216fca4b71519e41e8e0763cd75f2`
+    );
+
+    const EV = {
+      id: foundInApi.data.data.results[0].id,
+      name: foundInApi.data.data.results[0].title,
+      thumbnail: foundInApi.data.data.results[0].thumbnail,
+      description: foundInApi.data.data.results[0].description,
+      characters: foundInApi.data.data.results[0].characters.items?.map(it=>it.name)
+    };
+
+    res.send(EV);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/comics/:id", async (req, res, next) => {
+
+  try {
+    const { id } = req.params;
+
+    const foundInApi = await axios.get(
+      `https://gateway.marvel.com:443/v1/public/comics/${id}?&ts=1000&apikey=d90d6140617c322226c93ba1f1dd331b&hash=41b216fca4b71519e41e8e0763cd75f2`
+    );
+
+    const COM = {
+      id: foundInApi.data.data.results[0].id,
+      name: foundInApi.data.data.results[0].title,
+      thumbnail: foundInApi.data.data.results[0].thumbnail,
+      images:foundInApi.data.data.results[0].images,
+      description: foundInApi.data.data.results[0].description,
+      characters: foundInApi.data.data.results[0].characters.items?.map(it=>it.name)
+    };
+
+
+    res.send(COM);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/movies/:id", async (req, res, next) => {
+
+  try {
+    const { id } = req.params;
+
+    const foundInApi = await axios.get(
+      `https://imdb-api.com/en/API/Title/k_9ucia6j0/${id}/Images,Trailer,`
+    );
+
+    const MOV = {
+      id: foundInApi.data.id,
+      title: foundInApi.data.fullTitle,
+      image: foundInApi.data.image,
+      plot: foundInApi.data.plot,
+      directors: foundInApi.data.directors,
+      cast: foundInApi.data.actorList.map(ac=>ac.name),
+      images:foundInApi.data.images.items.map(ac=>ac.image),
+      trailer:foundInApi.data.trailer.linkEmbed
+    };
+
+    
+    res.send(MOV);
+  } catch (error) {
+    next(error);
+  }
+});
+
 
 module.exports = router;
