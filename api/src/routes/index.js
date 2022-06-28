@@ -236,7 +236,7 @@ router.get("/events/:id", async (req, res, next) => {
 
     const EV = {
       id: foundInApi.data.data.results[0].id,
-      name: foundInApi.data.data.results[0].name,
+      name: foundInApi.data.data.results[0].title,
       thumbnail: foundInApi.data.data.results[0].thumbnail,
       description: foundInApi.data.data.results[0].description,
       characters: foundInApi.data.data.results[0].characters.items?.map(it=>it.name)
@@ -259,7 +259,7 @@ router.get("/comics/:id", async (req, res, next) => {
 
     const COM = {
       id: foundInApi.data.data.results[0].id,
-      name: foundInApi.data.data.results[0].name,
+      name: foundInApi.data.data.results[0].title,
       thumbnail: foundInApi.data.data.results[0].thumbnail,
       images:foundInApi.data.data.results[0].images,
       description: foundInApi.data.data.results[0].description,
