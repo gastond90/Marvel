@@ -19,13 +19,41 @@ export function EventDetail() {
 
   return (
     <div>
-      <div>
-        <h1>EVENT DETAIL</h1>
+    <div>
+      <h1>EVENT DETAIL</h1>
+      {elevent.thumbnail && (
+        <div key={elevent.id}>
+          <h1>{elevent?.name}</h1>
 
-        <Link to="/home">
-          <button class="botondetail">VOLVER</button>
-        </Link>
-      </div>
+          <img
+            src={`${elevent?.thumbnail.path}.${elevent?.thumbnail.extension}`}
+            alt=""
+            width="450"
+            height="350"
+          />
+
+          <h3>Characters:</h3>
+
+           {  elevent.characters.map(i=> <p>{i}</p>
+            
+         )}
+
+     {/*  {  elevent.images.map(i=> <img
+            src={`${elevent?.images[0].path}.${elevent?.images[0].extension}`}
+            alt=""
+            width="450"
+            height="350"
+          />)} */}
+        
+          <h4 class="detalle"> {elevent?.description}</h4>
+        </div>
+      )}
+
+
+      <Link to="/home">
+        <button class="botondetail">VOLVER</button>
+      </Link>
     </div>
+  </div>
   );
 }

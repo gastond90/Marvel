@@ -55,12 +55,12 @@ export function getMovies() {
   };
 }
 
-/* export function orderByName (payload){
+export function orderByName (payload){
     return({
         type: ORDER_BY_NAME,
         payload
     })
-};*/
+};
 
 
 export function getCharactersByName(payload) {

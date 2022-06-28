@@ -7,6 +7,9 @@ import { ComicDetail } from './Components/ComicDetail';
 import { EventDetail } from './Components/EventDetail';
 import { MovieDetail } from './Components/MovieDetail';
 import PageNotFound from './Components/PageNotFound';
+import Comics from './Components/Comics';
+import Events from './Components/Events';
+import Movies from './Components/Movies';
 
 function App() {
   return (
@@ -15,11 +18,13 @@ function App() {
       <Routes>
       <Route path = '/' element = {<LandingPage/>} />
       <Route  path = '/home' element = {<Home/>}/>
+      <Route  path = '/home/comics' element = {<Comics/>}/>
+      <Route  path = '/home/events' element = {<Events/>}/>
+      <Route  path = '/home/movies' element = {<Movies/>}/>
       <Route  path='/home/:id' element = {<Detail/>}/>
       <Route  path='/home/comic/:id' element = {<ComicDetail/>}/>
       <Route  path='/home/event/:id' element = {<EventDetail/>}/>
       <Route  path='/home/movie/:id' element = {<MovieDetail/>}/>
- 
       <Route path='*' element={<PageNotFound/>}/>
       
       

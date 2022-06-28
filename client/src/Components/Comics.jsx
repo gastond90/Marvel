@@ -1,50 +1,52 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCharacters, orderByName, orderByRating, getComics, getEvents } from "../actions";
+import { orderByName, getComics } from "../actions";
 import { Link } from "react-router-dom";
 import Card from "./Card";
+import ComicCard from "./ComicCard";
 import { Paginated } from "./Paginated";
-import { SearchBar } from "./SearchBar";
-import  {SearchByComic} from "./SearchByComic";
-import { FilterByGenre } from "./FilterByGenre";
+import { SearchByComic } from "./SearchByComic";
 import "./Home.css";
 import "./Botones.css";
 import "./Card.css";
 
-export default function Home() {
+export default function Comics() {
   const dispatch = useDispatch();
-  const allVideogames = useSelector((state) => state.videogames);
   const allComics = useSelector((state) => state.comics);
-  const allEvents = useSelector((state) => state.events);
   const [orden, setOrden] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [videogamesPerPage, setVideogamesPerPage] = useState(15);
   const indexOfLastVideogame = currentPage * videogamesPerPage;
   const indexOfFirstVideogame = indexOfLastVideogame - videogamesPerPage;
-  const currentVideogames = allVideogames?.slice(
+  const currentVideogames = allComics?.slice(
     indexOfFirstVideogame,
     indexOfLastVideogame
   );
 
-  /* console.log(allComics, "loscomics"); */
-  console.log(allEvents, "loseventos")
+  /*  function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+    return
+  }
+  var shuffled = shuffle(currentVideogames) */
+
+  console.log(allComics, "loscomics");
+
+  /*   console.log(shuffled, "lospj") */
 
   const paginated = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
   useEffect(() => {
-    dispatch(getCharacters());
     dispatch(getComics());
-    dispatch(getEvents());
   }, []);
-  
 
   /* function handleClick(e) {
     e.preventDefault();
     dispatch(getCharacters());
   }
+  } */
 
   function handleSort(e) {
     e.preventDefault();
@@ -53,75 +55,33 @@ export default function Home() {
     setOrden(e.target.value);
   }
 
-  function handleSortRating(e) {
-    e.preventDefault();
-    dispatch(orderByRating(e.target.value));
-    setCurrentPage(1);
-    setOrden(e.target.value);
-  } */
-
-  /* console.log("CCURRENT", currentVideogames) */
-  let key = 1
+  let key = 1;
   return (
     <div class="home">
       <div class="home">
-        <div>
-          <h1></h1>
-        </div>
-
-        {/*  <button onClick={mejorescinco}>Top 5</button> */}
 
         {/*  <div>
-          <Link to="/videogame">
-            <button class= "botoncrearjuego">CREAR JUEGO</button>
-          </Link>
-          <div><h1></h1></div>
           <button onClick={(e) => { handleClick(e);}} class= "botonver"> VER JUEGOS </button>
         </div>
-        <div><h1></h1></div>
-        
-        <div><h1></h1></div>
-        <div>
-          <FilterByGenre />
-        </div> */}
+        */}
       </div>
-      <div>
-          <SearchBar /> 
-        </div>
-      <div>
-          <SearchByComic /> 
-        </div>
-      <div>
-        {/* <div class="content-select">
-        <select onChange={(e) => handleFilterCreated(e)}>
-        <option hidden={true}>Origen</option>
-          <option value="All">Todos</option>
-          <option value="Created">Creados</option>
-          <option value="Existing">Originales</option>
-        </select>
-        </div> */}
 
-        {/* <div class="content-select">
+      <div>
+        <SearchByComic />
+      </div>
+
+      <div>
+        <div class="content-select">
           <select onChange={(e) => handleSort(e)}>
-          <option hidden={true}>Por Nombre</option>
+            <option hidden={true}>Por Nombre</option>
             <option value="az">A-Z</option>
             <option value="za">Z-A</option>
           </select>
-          </div> */}
-
-        {/* <div class="content-select">
-          <select onChange={(e) => handleSortRating(e)}>
-          <option hidden={true}>Por Puntaje</option>
-            <option value="Max-Min">Mejores Primero</option>
-            <option value="Min-Max">Peores Primero</option>
-            <option value='top5'>mejores 5</option>
-
-          </select>
-        </div> */}
+        </div>
 
         <Paginated
           videogamesPerPage={videogamesPerPage}
-          allVideogames={allVideogames.length}
+          allComics={allComics.length}
           paginated={paginated}
         />
         <div class="videogames">
@@ -133,7 +93,7 @@ export default function Home() {
               width="630px"
               height="630px"
             />
-          ) : allVideogames[0] === "No existe el juego" ? (
+          ) : allComics[0] === "No existe el juego" ? (
             <img
               class="imgerr"
               src="https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg"
@@ -149,16 +109,14 @@ export default function Home() {
             currentVideogames.map((e) => {
               return (
                 <div key={key++}>
-                  <Link class="card" key={key++} to={`/home/${e.id}`}>
+                  <Link class="card" key={key++} to={`/home/comic/${e.id}`}>
                     <Card
                       class="card"
                       key={key++}
-                      name={e.name}
+                      name={e.title}
                       image={e.image}
-                      genre={e.genres?.join(",")}
-                      rating={e.rating}
-                      path={e.image.path}
-                      extension={e.image.extension}
+                      path={e.thumbnail.path}
+                      extension={e.thumbnail.extension}
                       description={e.description}
                     />
                   </Link>
