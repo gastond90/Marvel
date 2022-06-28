@@ -1,9 +1,20 @@
 import axios from 'axios';
-import {GET_CHARACTERS, ORDER_BY_NAME, ORDER_BY_RATING,
-    FILTER_BY_NAME, FILTER_BY_GENRE, GET_DETAIL,GET_COMICS, COMIC_BY_NAME, GET_EVENTS, EVENTS_BY_NAME,GET_MOVIES} from './constants';
+import {
+    GET_CHARACTERS,
+    ORDER_BY_NAME,
+    ORDER_BY_RATING,
+    FILTER_BY_NAME,
+    FILTER_BY_GENRE,
+    GET_DETAIL,
+    GET_COMICS,
+    COMIC_BY_NAME,
+    GET_EVENTS,
+    EVENTS_BY_NAME,
+    GET_MOVIES
+} from './constants';
 
-export function getCharacters (){
-    return async function (dispatch){
+export function getCharacters() {
+    return async function (dispatch) {
         var json = await axios.get('http://localhost:3001/characters');
         return dispatch({
             type: GET_CHARACTERS,
@@ -12,8 +23,8 @@ export function getCharacters (){
     }
 };
 
-export function getComics (){
-    return async function (dispatch){
+export function getComics() {
+    return async function (dispatch) {
         var json = await axios.get('http://localhost:3001/comics');
         return dispatch({
             type: GET_COMICS,
@@ -23,8 +34,8 @@ export function getComics (){
 };
 
 
-export function getEvents (){
-    return async function (dispatch){
+export function getEvents() {
+    return async function (dispatch) {
         var json = await axios.get('http://localhost:3001/events');
         return dispatch({
             type: GET_EVENTS,
@@ -33,8 +44,8 @@ export function getEvents (){
     }
 };
 
-export function getMovies (){
-    return async function (dispatch){
+export function getMovies() {
+    return async function (dispatch) {
         var json = await axios.get('http://localhost:3001/movies');
         return dispatch({
             type: GET_MOVIES,
@@ -58,11 +69,11 @@ export function orderByRating (payload){
 }; */
 
 
-export function getCharactersByName (payload) {
+export function getCharactersByName(payload) {
     return async function (dispatch) {
         try {
             var json2 = await axios.get(`http://localhost:3001/characters?name=${payload}`);
-            return dispatch ({
+            return dispatch({
                 type: FILTER_BY_NAME,
                 payload: json2.data
             })
@@ -72,11 +83,11 @@ export function getCharactersByName (payload) {
     }
 };
 
-export function getComicsByName (payload) {
+export function getComicsByName(payload) {
     return async function (dispatch) {
         try {
             var json2 = await axios.get(`http://localhost:3001/comics?name=${payload}`);
-            return dispatch ({
+            return dispatch({
                 type: COMIC_BY_NAME,
                 payload: json2.data
             })
@@ -85,11 +96,11 @@ export function getComicsByName (payload) {
         }
     }
 };
-export function getEventsByName (payload) {
+export function getEventsByName(payload) {
     return async function (dispatch) {
         try {
             var json2 = await axios.get(`http://localhost:3001/events?name=${payload}`);
-            return dispatch ({
+            return dispatch({
                 type: EVENTS_BY_NAME,
                 payload: json2.data
             })
@@ -100,17 +111,14 @@ export function getEventsByName (payload) {
 };
 
 
-export function getDetail (id){
-    return async function(dispatch){
+export function getDetail(id) {
+    return async function (dispatch) {
         try {
-            
             var json5 = await axios.get(`http://localhost:3001/characters/${id}`);
             return dispatch({
                 type: GET_DETAIL,
                 payload: json5.data,
-               
             })
-            
         } catch (error) {
             console.log(error)
         }

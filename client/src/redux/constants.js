@@ -10,6 +10,3 @@ export const COMIC_BY_NAME = 'COMIC_BY_NAME';
 export const GET_EVENTS = 'GET_EVENTS'; 
 export const GET_MOVIES = 'GET_MOVIES'; 
 export const EVENTS_BY_NAME = 'EVENTS_BY_NAME'; 
-
-
-
