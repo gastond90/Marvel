@@ -31,10 +31,7 @@ export function Detail() {
               height="350"
             />
 
-            {/* <h3 class="detalle">Géneros: {aGame.genres?.join(",")}</h3>
-                    <h3 class="detalle">Plataformas: {aGame.platforms?.join(",")}</h3>
-                    <h3 class="detalle">Puntaje: {aGame.rating}</h3>
-                    <h3 class="detalle">Lanzamiento: {aGame.released}</h3> */}
+          
             <h4 class="detalle"> {aGame?.description}</h4>
           </div>
         )}

@@ -36,7 +36,7 @@ router.get("/characters", async (req, res, next) => {
       let characters = [];
 
       const api = (await axios.get(
-        `https://gateway.marvel.com:443/v1/public/characters?limit=10&ts=1000&apikey=d90d6140617c322226c93ba1f1dd331b&hash=41b216fca4b71519e41e8e0763cd75f2` //cada llamado me trae 20
+        `https://gateway.marvel.com:443/v1/public/characters?limit=100&ts=1000&apikey=d90d6140617c322226c93ba1f1dd331b&hash=41b216fca4b71519e41e8e0763cd75f2` //cada llamado me trae 20
       ))
 
 

@@ -1,47 +1,46 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCharacters, orderByName,getMovies} from "../actions";
+import { orderByName, getEvents } from "../actions";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import { Paginated } from "./Paginated";
-import { SearchBar } from "./SearchBar";
+import { SearchByEvent } from "./SearchByEvent";
+import EventCard from "./EventCard";
 import "./Home.css";
 import "./Botones.css";
 import "./Card.css";
 
-export default function Home() {
+export default function Events() {
   const dispatch = useDispatch();
-  const allVideogames = useSelector((state) => state.videogames);
-  const allMovies = useSelector((state) => state.movies)
+  const allEvents = useSelector((state) => state.events);
   const [orden, setOrden] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [videogamesPerPage, setVideogamesPerPage] = useState(15);
   const indexOfLastVideogame = currentPage * videogamesPerPage;
   const indexOfFirstVideogame = indexOfLastVideogame - videogamesPerPage;
-  const currentVideogames = allVideogames?.slice(
+  const currentVideogames = allEvents?.slice(
     indexOfFirstVideogame,
     indexOfLastVideogame
   );
-  
- /*  function shuffle(array) {
+
+  /*  function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
     return
   }
   var shuffled = shuffle(currentVideogames) */
 
+  console.log(allEvents, "losevents");
+
+  /*   console.log(shuffled, "lospj") */
 
   const paginated = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
   useEffect(() => {
-    dispatch(getCharacters());
-    dispatch(getMovies());
+    dispatch(getEvents());
   }, []);
-
-  console.log(allMovies, "laspelis")
-  
 
   /* function handleClick(e) {
     e.preventDefault();
@@ -56,46 +55,33 @@ export default function Home() {
     setOrden(e.target.value);
   }
 
-
-  let key = 1
+  let key = 1;
   return (
     <div class="home">
       <div class="home">
-        <div>
-        <Link to="/home/comics">
-          <button >COMICS</button>
-        </Link><Link to="/home/events">
-          <button >EVENTS</button>
-        </Link><Link to="/home/movies">
-          <button >MOVIES</button>
-        </Link>
-        </div>
-
 
         {/*  <div>
-          
           <button onClick={(e) => { handleClick(e);}} class= "botonver"> VER JUEGOS </button>
         </div>
-      > */}
+        */}
       </div>
-      <div>
-          <SearchBar /> 
-        </div>
-      
-      <div>
-        
 
+      <div>
+        <SearchByEvent />
+      </div>
+
+      <div>
         <div class="content-select">
           <select onChange={(e) => handleSort(e)}>
-          <option hidden={true}>Por Nombre</option>
+            <option hidden={true}>Por Nombre</option>
             <option value="az">A-Z</option>
             <option value="za">Z-A</option>
           </select>
-          </div>
+        </div>
 
         <Paginated
           videogamesPerPage={videogamesPerPage}
-          allVideogames={allVideogames.length}
+          allEvents={allEvents.length}
           paginated={paginated}
         />
         <div class="videogames">
@@ -107,7 +93,7 @@ export default function Home() {
               width="630px"
               height="630px"
             />
-          ) : allVideogames[0] === "No existe el juego" ? (
+          ) : allEvents[0] === "No existe el juego" ? (
             <img
               class="imgerr"
               src="https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg"
@@ -123,22 +109,21 @@ export default function Home() {
             currentVideogames.map((e) => {
               return (
                 <div key={key++}>
-                  <Link class="card" key={key++} to={`/home/${e.id}`}>
+                  <Link class="card" key={key++} to={`/home/event/${e.id}`}>
                     <Card
                       class="card"
                       key={key++}
-                      name={e.name}
+                      name={e.title}
                       image={e.image}
-                      genre={e.genres?.join(",")}
-                      rating={e.rating}
-                      path={e.image.path}
-                      extension={e.image.extension}
+                      path={e.thumbnail.path}
+                      extension={e.thumbnail.extension}
                       description={e.description}
                     />
                   </Link>
                 </div>
+              
               );
-            })
+            }) 
           )}
         </div>
       </div>

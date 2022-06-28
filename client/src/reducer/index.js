@@ -34,7 +34,7 @@ function rootReducer(state = initialSate, action) {
         allVideogames: action.payload,
       };
 
-    /* case ORDER_BY_NAME:
+    case ORDER_BY_NAME:
             const orderGames = action.payload === 'az' ? 
             state.videogames.sort((a,b)=>{
                 if(a.name > b.name){
@@ -55,7 +55,7 @@ function rootReducer(state = initialSate, action) {
             return{
                 ...state,
                 videogames: orderGames
-            } */
+            }
 
     case FILTER_BY_NAME:
       return {
