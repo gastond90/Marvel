@@ -25,6 +25,31 @@ export function MovieDetail() {
           <div key={lapeli.id}>
             <h1>{lapeli?.title}</h1>
 
+
+            <img src={`${lapeli.image}`} alt="" width="450" height="350" />
+
+            <h3>Cast:</h3>
+
+            {lapeli.cast.map((i) => (
+              <p>{i}</p>
+            ))}
+
+            <h3>Director:{lapeli.directors}</h3>
+
+            {lapeli.images.map((i) => (
+              <img src={i} alt="" width="75" height="75" />
+            ))}
+            <p>{lapeli.plot}</p>
+
+            <h4 class="detalle"> {lapeli?.description}</h4>
+          </div>
+        )}
+
+        <h3>Trailer:</h3>
+
+        <video src={lapeli.trailer} width="640" height="480"></video>
+
+
             <img src={`${lapeli.image}`} alt="" width="450" height="350" />
 
             <h3>Cast:</h3>

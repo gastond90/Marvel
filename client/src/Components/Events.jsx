@@ -81,7 +81,9 @@ export default function Events() {
 
         <Paginated
           videogamesPerPage={videogamesPerPage}
+
           allVideogames={allEvents.length}
+
           paginated={paginated}
         />
         <div class="videogames">

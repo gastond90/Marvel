@@ -56,6 +56,7 @@ export function getMovies() {
   };
 }
 
+
 export function getVideogames (){
   return async function (dispatch){
       var json = await axios.get('http://localhost:3001/videogames');
@@ -65,6 +66,7 @@ export function getVideogames (){
       })
   }
 };
+
 
 export function orderByName (payload){
     return({
