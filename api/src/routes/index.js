@@ -301,4 +301,90 @@ router.get("/movies/:id", async (req, res, next) => {
 });
 
 
+
+router.get("/videogames", async (req, res, next) => {
+  try {
+   
+      let videogames = []; 
+
+      //y ahora me traigo todos (100) de la api
+      const api = axios.get(
+        `https://api.rawg.io/api/games?search=marvel&key=d47fdbc78fde4d58b3ae93f7ac2c6b7e` //cada llamado me trae 20
+      );
+      const api2 = axios.get(
+        `https://api.rawg.io/api/games?search=marvel&key=d47fdbc78fde4d58b3ae93f7ac2c6b7e&page=2`
+      );
+      const api3 = axios.get(
+        `https://api.rawg.io/api/games?search=marvel&key=d47fdbc78fde4d58b3ae93f7ac2c6b7e&page=3`
+      );
+     /*  const api4 = axios.get(
+        `https://api.rawg.io/api/games?search=marvel&key=${API_KEY}&page=4`
+      );
+      const api5 = axios.get(
+        `https://api.rawg.io/api/games?search=marvel&key=${API_KEY}&page=5`
+      ); */
+
+      let promesas = await Promise.all([api, api2, api3, /* api4, api5 */]);
+
+      PageOne = promesas[0].data.results;
+      PageTwo = promesas[1].data.results;
+      PageThree = promesas[2].data.results;
+      /* PageFour = promesas[3].data.results;
+      PageFive = promesas[4].data.results; */
+
+      let todo = PageOne.concat(PageTwo)
+        .concat(PageThree)
+        /* .concat(PageFour)
+        .concat(PageFive); */
+
+      todo.forEach((videogame) => {
+        
+        videogames.push({
+          id: videogame.id,
+          name: videogame.name,
+          image: videogame.background_image,
+          released: videogame.released,
+          rating: videogame.rating,
+          platforms: videogame.platforms?.map((pl) => pl.platform.name),
+          genres: videogame.genres?.map((gen) => gen.name),
+        });
+      });
+
+      res.send(videogames); // mando el array con todo lo pusheado
+    }
+   catch (error) {
+    next(error);
+  }
+});
+
+router.get("/videogames/:id", async (req, res, next) => {
+  //si busco un game por ID
+  try {
+    const { id } = req.params;
+
+      const foundInApi = await axios.get(
+        `https://api.rawg.io/api/games/${id}?key=d47fdbc78fde4d58b3ae93f7ac2c6b7e`
+      );
+
+      const APIGAME = {
+        
+        id: foundInApi.data.id,
+        name: foundInApi.data.name,
+        image: foundInApi.data.background_image,
+        description: foundInApi.data.description,
+        released: foundInApi.data.released,
+        rating: foundInApi.data.rating,
+        platforms: foundInApi.data.platforms.map((p) => p.platform.name),
+        genres: foundInApi.data.genres.map((g) => g.name),
+      };
+
+      res.send(APIGAME); 
+    
+  } catch (error) {
+    next(error);
+  }
+});
+
+
+
 module.exports = router;

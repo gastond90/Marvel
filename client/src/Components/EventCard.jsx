@@ -17,7 +17,6 @@ export default function EventCard({
           <div>
           
             <span >{name}</span>
-            <p>{main}</p>
             
           </div>
           <div >

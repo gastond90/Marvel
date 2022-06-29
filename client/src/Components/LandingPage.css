@@ -2,11 +2,11 @@
 .buttonStart {
   background-image:url(./Img/start.gif);
   background-repeat:no-repeat;
-  height:150px;
-  width: 640px;
+  height:482px;
+  width: 1200px;
   position:absolute;
-  left: 30%;
-  top: 30%;
+  left: 15%;
+  top: 20%;
   background-position:center;
   border: none; 
   outline:none;

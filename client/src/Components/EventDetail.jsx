@@ -50,7 +50,8 @@ export function EventDetail() {
       )}
 
 
-      <Link to="/home">
+      <Link to="/home/events">
+
         <button class="botondetail">VOLVER</button>
       </Link>
     </div>

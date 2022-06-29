@@ -1,7 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCharacters, orderByName,getMovies} from "../actions";
+
+import { getCharacters, orderByName, getVideogames } from "../actions";
+
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import { Paginated } from "./Paginated";
@@ -13,7 +15,6 @@ import "./Card.css";
 export default function Home() {
   const dispatch = useDispatch();
   const allVideogames = useSelector((state) => state.videogames);
-  const allMovies = useSelector((state) => state.movies)
   const [orden, setOrden] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [videogamesPerPage, setVideogamesPerPage] = useState(15);
@@ -31,17 +32,20 @@ export default function Home() {
   var shuffled = shuffle(currentVideogames) */
 
 
+  /*  function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+    return
+  }
+  var shuffled = shuffle(currentVideogames) */
+
+
   const paginated = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
   useEffect(() => {
     dispatch(getCharacters());
-    dispatch(getMovies());
-  }, []);
 
-  console.log(allMovies, "laspelis")
-  
 
   /* function handleClick(e) {
     e.preventDefault();
@@ -57,19 +61,28 @@ export default function Home() {
   }
 
 
+
   let key = 1
+
   return (
     <div class="home">
       <div class="home">
         <div>
-        <Link to="/home/comics">
-          <button >COMICS</button>
-        </Link><Link to="/home/events">
-          <button >EVENTS</button>
-        </Link><Link to="/home/movies">
-          <button >MOVIES</button>
-        </Link>
+
+          <Link to="/home/comics">
+            <button>COMICS</button>
+          </Link>
+          <Link to="/home/events">
+            <button>EVENTS</button>
+          </Link>
+          <Link to="/home/movies">
+            <button>MOVIES</button>
+          </Link>
+          <Link to="/home/games">
+            <button>GAMES</button>
+          </Link>
         </div>
+
 
 
         {/*  <div>
@@ -79,19 +92,27 @@ export default function Home() {
       > */}
       </div>
       <div>
-          <SearchBar /> 
-        </div>
+
+        <SearchBar />
+      </div>
+
+      
       
       <div>
         
 
+
         <div class="content-select">
           <select onChange={(e) => handleSort(e)}>
-          <option hidden={true}>Por Nombre</option>
+            <option hidden={true}>Por Nombre</option>
             <option value="az">A-Z</option>
             <option value="za">Z-A</option>
           </select>
+
+        </div>
+
           </div>
+
 
         <Paginated
           videogamesPerPage={videogamesPerPage}
@@ -119,7 +140,6 @@ export default function Home() {
             </div>
           ) : (
             currentVideogames &&
-            
             currentVideogames.map((e) => {
               return (
                 <div key={key++}>

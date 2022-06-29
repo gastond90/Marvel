@@ -1,25 +1,24 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { orderByName, getEvents } from "../actions";
+import { orderByName, getVideogames } from "../actions";
 import { Link } from "react-router-dom";
-import Card from "./Card";
+import GameCard from "./GameCard";
 import { Paginated } from "./Paginated";
-import { SearchByEvent } from "./SearchByEvent";
-import EventCard from "./EventCard";
+import { SearchByComic } from "./SearchByComic";
 import "./Home.css";
 import "./Botones.css";
 import "./Card.css";
 
-export default function Events() {
+export default function Games() {
   const dispatch = useDispatch();
-  const allEvents = useSelector((state) => state.events);
+  const allGames = useSelector((state) => state.games);
   const [orden, setOrden] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [videogamesPerPage, setVideogamesPerPage] = useState(15);
   const indexOfLastVideogame = currentPage * videogamesPerPage;
   const indexOfFirstVideogame = indexOfLastVideogame - videogamesPerPage;
-  const currentVideogames = allEvents?.slice(
+  const currentVideogames = allGames?.slice(
     indexOfFirstVideogame,
     indexOfLastVideogame
   );
@@ -30,7 +29,7 @@ export default function Events() {
   }
   var shuffled = shuffle(currentVideogames) */
 
-  console.log(allEvents, "losevents");
+  console.log(allGames, "losgames");
 
   /*   console.log(shuffled, "lospj") */
 
@@ -39,7 +38,7 @@ export default function Events() {
   };
 
   useEffect(() => {
-    dispatch(getEvents());
+    dispatch(getVideogames());
   }, []);
 
   /* function handleClick(e) {
@@ -58,32 +57,31 @@ export default function Events() {
   let key = 1;
   return (
     <div class="home">
-      <div class="home">
 
+      <h1>GAMES</h1>
+      <div class="home">
         {/*  <div>
           <button onClick={(e) => { handleClick(e);}} class= "botonver"> VER JUEGOS </button>
         </div>
         */}
       </div>
 
-      <div>
-        <SearchByEvent />
-      </div>
+      {/*   <div>
+        <SearchByComic />
+      </div> */}
 
       <div>
-        <div class="content-select">
+        {/* <div class="content-select">
           <select onChange={(e) => handleSort(e)}>
             <option hidden={true}>Por Nombre</option>
             <option value="az">A-Z</option>
             <option value="za">Z-A</option>
           </select>
-        </div>
+        </div> */}
 
         <Paginated
           videogamesPerPage={videogamesPerPage}
-
-          allVideogames={allEvents.length}
-
+          allVideogames={allGames.length}
           paginated={paginated}
         />
         <div class="videogames">
@@ -95,7 +93,7 @@ export default function Events() {
               width="630px"
               height="630px"
             />
-          ) : allEvents[0] === "No existe el juego" ? (
+          ) : allGames[0] === "No existe el juego" ? (
             <img
               class="imgerr"
               src="https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg"
@@ -107,25 +105,23 @@ export default function Events() {
             </div>
           ) : (
             currentVideogames &&
-            
             currentVideogames.map((e) => {
               return (
                 <div key={key++}>
-                  <Link class="card" key={key++} to={`/home/event/${e.id}`}>
-                    <Card
+                  <Link class="card" key={e.id} to={`/home/game/${e.id}`}>
+                    <GameCard
                       class="card"
-                      key={key++}
-                      name={e.title}
+                      key={e.id}
+                      name={e.name}
                       image={e.image}
-                      path={e.thumbnail.path}
-                      extension={e.thumbnail.extension}
-                      description={e.description}
+                      genre={e.genres?.join(",")}
+                      platforms={e.platforms?.join(",")}
+                      rating={e.rating}
                     />
                   </Link>
                 </div>
-              
               );
-            }) 
+            })
           )}
         </div>
       </div>

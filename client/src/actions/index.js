@@ -3,7 +3,6 @@ import {
   GET_CHARACTERS,
   ORDER_BY_NAME,
   FILTER_BY_NAME,
-  FILTER_BY_GENRE,
   GET_DETAIL,
   GET_COMICS,
   COMIC_BY_NAME,
@@ -12,7 +11,9 @@ import {
   GET_MOVIES,
   GET_MOVIE_DETAIL,
   GET_EVENT_DETAIL,
-  GET_COMIC_DETAIL
+  GET_COMIC_DETAIL,
+  GET_VIDEOGAMES,
+  GET_GAME_DETAIL
 } from "./constants";
 
 export function getCharacters() {
@@ -54,6 +55,18 @@ export function getMovies() {
     });
   };
 }
+
+
+export function getVideogames (){
+  return async function (dispatch){
+      var json = await axios.get('http://localhost:3001/videogames');
+      return dispatch({
+          type: GET_VIDEOGAMES,
+          payload: json.data
+      })
+  }
+};
+
 
 export function orderByName (payload){
     return({
@@ -166,3 +179,16 @@ export function getComicDetail(id) {
     };
   }
 
+  export function getGameDetail(id) {
+    return async function (dispatch) {
+      try {
+        var json5 = await axios.get(`http://localhost:3001/videogames/${id}`);
+        return dispatch({
+          type: GET_GAME_DETAIL,
+          payload: json5.data,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  }

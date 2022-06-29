@@ -25,6 +25,7 @@ export function ComicDetail() {
           <div key={elcomic.id}>
             <h1>{elcomic?.name}</h1>
 
+
             <img
               src={`${elcomic?.thumbnail.path}.${elcomic?.thumbnail.extension}`}
               alt=""
@@ -49,11 +50,3 @@ export function ComicDetail() {
           </div>
         )}
 
-
-        <Link to="/home">
-          <button class="botondetail">VOLVER</button>
-        </Link>
-      </div>
-    </div>
-  );
-}
