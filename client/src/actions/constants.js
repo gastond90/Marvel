@@ -13,6 +13,8 @@ export const EVENTS_BY_NAME = 'EVENTS_BY_NAME';
 export const GET_COMIC_DETAIL = 'GET_COMIC_DETAIL'; 
 export const GET_EVENT_DETAIL = 'GET_EVENT_DETAIL'; 
 export const GET_MOVIE_DETAIL = 'GET_MOVIE_DETAIL'; 
+export const GET_VIDEOGAMES = 'GET_VIDEOGAMES';
+export const GET_GAME_DETAIL = 'GET_GAME_DETAIL'; 
 
 
 

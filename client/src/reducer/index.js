@@ -12,7 +12,9 @@ import {
   GET_MOVIES,
   GET_MOVIE_DETAIL,
   GET_EVENT_DETAIL,
-  GET_COMIC_DETAIL
+  GET_COMIC_DETAIL,
+  GET_VIDEOGAMES,
+  GET_GAME_DETAIL
 } from "../actions/constants";
 
 const initialSate = {
@@ -23,6 +25,7 @@ const initialSate = {
   comics: [],
   events: [],
   movies: [],
+  games:[]
 };
 
 function rootReducer(state = initialSate, action) {
@@ -33,6 +36,13 @@ function rootReducer(state = initialSate, action) {
         videogames: action.payload,
         allVideogames: action.payload,
       };
+
+      case GET_VIDEOGAMES:
+        return {
+        ...state,
+        games: action.payload,
+        
+        };
 
     case ORDER_BY_NAME:
             const orderGames = action.payload === 'az' ? 
@@ -85,6 +95,11 @@ function rootReducer(state = initialSate, action) {
         detail: action.payload,
       };
     case GET_MOVIE_DETAIL:
+      return {
+        ...state,
+        detail: action.payload,
+      };
+    case GET_GAME_DETAIL:
       return {
         ...state,
         detail: action.payload,

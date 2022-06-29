@@ -81,7 +81,7 @@ export default function Comics() {
 
         <Paginated
           videogamesPerPage={videogamesPerPage}
-          allComics={allComics.length}
+          allVideogames={allComics.length}
           paginated={paginated}
         />
         <div class="videogames">

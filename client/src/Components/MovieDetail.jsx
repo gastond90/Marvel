@@ -28,7 +28,7 @@ export function MovieDetail() {
             <img src={`${lapeli.image}`} alt="" width="450" height="350" />
 
             <h3>Cast:</h3>
-
+         
             {lapeli.cast.map((i) => (
               <p>{i}</p>
             ))}
@@ -48,7 +48,7 @@ export function MovieDetail() {
 
         <video src={lapeli.trailer} width="640" height="480"></video>
 
-        <Link to="/home">
+        <Link to="/home/movies">
           <button class="botondetail">VOLVER</button>
         </Link>
       </div>

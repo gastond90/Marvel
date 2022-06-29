@@ -50,7 +50,7 @@ export function ComicDetail() {
         )}
 
 
-        <Link to="/home">
+        <Link to="/home/comics">
           <button class="botondetail">VOLVER</button>
         </Link>
       </div>

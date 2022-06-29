@@ -11,8 +11,8 @@ export default function LandingPage () {
             <Link to = '/home'>
                 <button class="buttonStart"></button>
             </Link>
-            <button class="pac"></button>
-            <button class="black"></button>
+           
+            
         </div>
     )
 }
