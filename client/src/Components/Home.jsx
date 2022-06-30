@@ -1,7 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { getCharacters, orderByName } from "../actions";
+
+
+
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import { Paginated } from "./Paginated";
@@ -22,12 +26,20 @@ export default function Home() {
     indexOfFirstVideogame,
     indexOfLastVideogame
   );
+  
+ /*  function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+    return
+  }
+  var shuffled = shuffle(currentVideogames) */
+
 
   /*  function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
     return
   }
   var shuffled = shuffle(currentVideogames) */
+
 
   const paginated = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -51,11 +63,15 @@ export default function Home() {
     setOrden(e.target.value);
   }
 
-  let key = 1;
+
+
+  let key = 1
+
   return (
     <div class="home">
       <div class="home">
         <div>
+
           <Link to="/home/comics">
             <button>COMICS</button>
           </Link>
@@ -70,6 +86,8 @@ export default function Home() {
           </Link>
         </div>
 
+
+
         {/*  <div>
           
           <button onClick={(e) => { handleClick(e);}} class= "botonver"> VER JUEGOS </button>
@@ -77,17 +95,27 @@ export default function Home() {
       > */}
       </div>
       <div>
+
         <SearchBar />
       </div>
 
+      
+      
       <div>
+        
+
+
         <div class="content-select">
           <select onChange={(e) => handleSort(e)}>
             <option hidden={true}>Por Nombre</option>
             <option value="az">A-Z</option>
             <option value="za">Z-A</option>
           </select>
+
         </div>
+
+          </div>
+
 
         <Paginated
           videogamesPerPage={videogamesPerPage}
@@ -137,6 +165,6 @@ export default function Home() {
           )}
         </div>
       </div>
-    </div>
+    
   );
 }

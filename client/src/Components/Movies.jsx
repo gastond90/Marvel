@@ -67,7 +67,9 @@ export default function Movies() {
 
         <Paginated
           videogamesPerPage={videogamesPerPage}
+
           allVideogames={allMovies.length}
+
           paginated={paginated}
         />
         <div class="videogames">
