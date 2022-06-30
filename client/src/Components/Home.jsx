@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCharacters, orderByName, getVideogames } from "../actions";
+import { getCharacters, orderByName } from "../actions";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import { Paginated } from "./Paginated";
@@ -13,7 +13,6 @@ import "./Card.css";
 export default function Home() {
   const dispatch = useDispatch();
   const allVideogames = useSelector((state) => state.videogames);
-  const allGames = useSelector((state) => state.games);
   const [orden, setOrden] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [videogamesPerPage, setVideogamesPerPage] = useState(15);
@@ -36,10 +35,8 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getCharacters());
-    dispatch(getVideogames());
   }, []);
 
-  console.log("LOSGAMES", allGames);
 
   /* function handleClick(e) {
     e.preventDefault();
