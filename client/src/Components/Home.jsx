@@ -2,7 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getCharacters, orderByName, getVideogames } from "../actions";
+import { getCharacters, orderByName } from "../actions";
+
+
 
 import { Link } from "react-router-dom";
 import Card from "./Card";
@@ -45,6 +47,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getCharacters());
+  }, []);
 
 
   /* function handleClick(e) {
@@ -162,6 +165,6 @@ export default function Home() {
           )}
         </div>
       </div>
-    </div>
+    
   );
 }
