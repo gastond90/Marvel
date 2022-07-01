@@ -167,6 +167,7 @@ export function getComicDetail(id) {
 
   export function getMovieDetail(id) {
     return async function (dispatch) {
+      
       try {
         var json5 = await axios.get(`http://localhost:3001/movies/${id}`);
         return dispatch({

@@ -11,9 +11,8 @@ import PageNotFound from './Components/PageNotFound';
 import Comics from './Components/Comics';
 import Events from './Components/Events';
 import Movies from './Components/Movies';
-
 import Games from './Components/Games';
-
+import { Prueba } from './Components/prueba';
 
 
 function App() {
@@ -26,17 +25,14 @@ function App() {
       <Route  path = '/home/comics' element = {<Comics/>}/>
       <Route  path = '/home/events' element = {<Events/>}/>
       <Route  path = '/home/movies' element = {<Movies/>}/>
-
       <Route  path = '/home/games' element = {<Games/>}/>
-
-
-
+      <Route  path = '/home/prueba' element = {<Prueba/>}/>
+     
       <Route  path='/home/:id' element = {<Detail/>}/>
       <Route  path='/home/comic/:id' element = {<ComicDetail/>}/>
       <Route  path='/home/event/:id' element = {<EventDetail/>}/>
       <Route  path='/home/movie/:id' element = {<MovieDetail/>}/>
-
-
+      <Route  path = '/home/game/:id' element = {<GameDetail/>}/>
 
       <Route path='*' element={<PageNotFound/>}/>
       

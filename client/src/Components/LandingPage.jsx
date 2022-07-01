@@ -9,7 +9,7 @@ export default function LandingPage () {
         <div class= "land">   
 
             <Link to = '/home'>
-                <button class="buttonStart"></button>
+                <button className="buttonStart"></button>
             </Link>
            
             

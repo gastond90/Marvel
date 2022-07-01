@@ -57,27 +57,62 @@ export default function Events() {
 
   let key = 1;
   return (
-    <div class="home">
-      <div class="home">
+    <div className="home">
+      <nav class="navv">
+      <h1>EVENTS</h1>
+        <ul class="container">
+        <li class="dropdown">
+          <div>
+              <Link to="/home">
+                <button class="bg-gray-1300 hover:bg-gray-400 text-gray-400 font-bold py-2 px-4 ">
+                  HOME
+                </button>
+              </Link>
+              <Link to="/home/comics">
+                <button class="bg-gray-1300 hover:bg-gray-400 text-gray-400 font-bold py-2 px-4 ">
+                  COMICS
+                </button>
+              </Link>
+              <Link to="/home/movies">
+                <button class="bg-gray-1300 hover:bg-gray-400 text-gray-400 font-bold py-2 px-4 ">
+                  MOVIES
+                </button>
+              </Link>
+              <Link to="/home/games">
+                <button class="bg-gray-1300 hover:bg-gray-400 text-gray-400 font-bold py-2 px-4 ">
+                 GAMES
+                </button>
+
+                <div class="inline-flex"></div>
+              </Link>
+            </div>
+          </li>
+          
+          <h5>Marvel App</h5>
+             Ton Duba 2022☕
+        </ul>
+        <div>
+        <SearchByEvent />
+      </div>
+
+      </nav>
+      <div className="home">
 
         {/*  <div>
-          <button onClick={(e) => { handleClick(e);}} class= "botonver"> VER JUEGOS </button>
+          <button onClick={(e) => { handleClick(e);}} className= "botonver"> VER JUEGOS </button>
         </div>
         */}
       </div>
 
+     
       <div>
-        <SearchByEvent />
-      </div>
-
-      <div>
-        <div class="content-select">
+       {/*  <div className="content-select">
           <select onChange={(e) => handleSort(e)}>
             <option hidden={true}>Por Nombre</option>
             <option value="az">A-Z</option>
             <option value="za">Z-A</option>
           </select>
-        </div>
+        </div> */}
 
         <Paginated
           videogamesPerPage={videogamesPerPage}
@@ -86,10 +121,10 @@ export default function Events() {
 
           paginated={paginated}
         />
-        <div class="videogames">
+        <div>
           {currentVideogames[0] === "NO" ? (
             <img
-              class="imgerr"
+              className="imgerr"
               src="https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg"
               alt=""
               width="630px"
@@ -97,13 +132,13 @@ export default function Events() {
             />
           ) : allEvents[0] === "No existe el juego" ? (
             <img
-              class="imgerr"
+              className="imgerr"
               src="https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg"
               alt=""
             />
           ) : currentVideogames.length === 0 ? (
             <div>
-              <button class="loader">LOADING...</button>
+              <button className="loader">LOADING...</button>
             </div>
           ) : (
             currentVideogames &&
@@ -111,9 +146,9 @@ export default function Events() {
             currentVideogames.map((e) => {
               return (
                 <div key={key++}>
-                  <Link class="card" key={key++} to={`/home/event/${e.id}`}>
+                  <Link className="card" key={key++} to={`/home/event/${e.id}`}>
                     <Card
-                      class="card"
+                      className="card"
                       key={key++}
                       name={e.title}
                       image={e.image}

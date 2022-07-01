@@ -215,6 +215,7 @@ router.get("/movies", async (req, res, next) => {
         title: it.title,
         year: it.year,
         image: it.image,
+        description:it.description
       });
     });
     
@@ -278,19 +279,26 @@ router.get("/movies/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
 
+   /*  console.log("ELID", id) */
+
     const foundInApi = await axios.get(
       `https://imdb-api.com/en/API/Title/k_9ucia6j0/${id}/Images,Trailer,`
     );
 
     const MOV = {
       id: foundInApi.data.id,
-      title: foundInApi.data.fullTitle,
+      title: foundInApi.data.title,
+      year:foundInApi.data.year,
+      runtime:foundInApi.data.runtimeStr,
       image: foundInApi.data.image,
+      rating: foundInApi.data.imDbRating,
       plot: foundInApi.data.plot,
       directors: foundInApi.data.directors,
       cast: foundInApi.data.actorList.map(ac=>ac.name),
+      genres: foundInApi.data.genreList.map(ac=>ac.value),
       images:foundInApi.data.images.items.map(ac=>ac.image),
       trailer:foundInApi.data.trailer.linkEmbed
+
     };
 
     
@@ -309,14 +317,14 @@ router.get("/videogames", async (req, res, next) => {
 
       //y ahora me traigo todos (100) de la api
       const api = axios.get(
-        `https://api.rawg.io/api/games?search=marvel&key=d47fdbc78fde4d58b3ae93f7ac2c6b7e` //cada llamado me trae 20
+        `https://api.rawg.io/api/games?search=marvel&key=d47fdbc78fde4d58b3ae93f7ac2c6b7e&page=2` //cada llamado me trae 20
       );
-      const api2 = axios.get(
+      /* const api2 = axios.get(
         `https://api.rawg.io/api/games?search=marvel&key=d47fdbc78fde4d58b3ae93f7ac2c6b7e&page=2`
       );
       const api3 = axios.get(
         `https://api.rawg.io/api/games?search=marvel&key=d47fdbc78fde4d58b3ae93f7ac2c6b7e&page=3`
-      );
+      ); */
      /*  const api4 = axios.get(
         `https://api.rawg.io/api/games?search=marvel&key=${API_KEY}&page=4`
       );
@@ -324,16 +332,16 @@ router.get("/videogames", async (req, res, next) => {
         `https://api.rawg.io/api/games?search=marvel&key=${API_KEY}&page=5`
       ); */
 
-      let promesas = await Promise.all([api, api2, api3, /* api4, api5 */]);
+      let promesas = await Promise.all([api, /* api2, api3, */ /* api4, api5 */]);
 
       PageOne = promesas[0].data.results;
-      PageTwo = promesas[1].data.results;
-      PageThree = promesas[2].data.results;
+      /* PageTwo = promesas[1].data.results;
+      PageThree = promesas[2].data.results; */
       /* PageFour = promesas[3].data.results;
       PageFive = promesas[4].data.results; */
 
-      let todo = PageOne.concat(PageTwo)
-        .concat(PageThree)
+      let todo = PageOne/* .concat(PageTwo)
+        .concat(PageThree) */
         /* .concat(PageFour)
         .concat(PageFive); */
 
@@ -344,6 +352,7 @@ router.get("/videogames", async (req, res, next) => {
           name: videogame.name,
           image: videogame.background_image,
           released: videogame.released,
+          description: videogame.description,
           rating: videogame.rating,
           platforms: videogame.platforms?.map((pl) => pl.platform.name),
           genres: videogame.genres?.map((gen) => gen.name),

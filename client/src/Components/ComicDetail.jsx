@@ -11,7 +11,7 @@ export function ComicDetail() {
   const { id } = useParams();
   const elcomic = useSelector((state) => state.detail);
 
-  console.log("DETALLE", elcomic);
+  let key=1
 
   useEffect(() => {
     dispatch(getComicDetail(id));
@@ -35,7 +35,7 @@ export function ComicDetail() {
 
 <h3>Characters:</h3>
 
-{  elcomic.characters.map(i=> <p>{i}</p>
+{  elcomic.characters.map(i=> <p key={key++}>{i}</p>
  
 )}
 
@@ -46,7 +46,16 @@ export function ComicDetail() {
               height="350"
             />)} */}
           
-            <h4 class="detalle"> {elcomic?.description}</h4>
+            <h4 className="detalle"> {elcomic?.description}</h4>
           </div>
         )}
+
+<Link to="/home/events">
+
+<button className="botondetail">VOLVER</button>
+</Link>
+</div>
+</div>
+);
+}
 

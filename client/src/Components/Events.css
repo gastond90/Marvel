@@ -46,7 +46,7 @@ position: relative;
 	color: rgb(255, 255, 255);
 }
  
-.videogames {
+/* .videogames {
         text-decoration: none;
         margin: 100px 100px 100px 100px;
         display: grid;
@@ -59,7 +59,7 @@ position: relative;
 		color: white;
 		box-shadow: none;
 	
-}
+} */
 
 a:link {
     color: white;

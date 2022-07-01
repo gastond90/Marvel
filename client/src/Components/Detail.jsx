@@ -32,12 +32,12 @@ export function Detail() {
             />
 
           
-            <h4 class="detalle"> {aGame?.description}</h4>
+            <h4 className="detalle"> {aGame?.description}</h4>
           </div>
         )}
 
         <Link to="/home">
-          <button class="botondetail">VOLVER</button>
+          <button className="botondetail">VOLVER</button>
         </Link>
       </div>
     </div>

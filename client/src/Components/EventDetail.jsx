@@ -11,7 +11,7 @@ export function EventDetail() {
   const { id } = useParams();
   const elevent = useSelector((state) => state.detail);
 
-  console.log("DETALLE", elevent);
+ let key=1
 
   useEffect(() => {
     dispatch(getEventDetail(id));
@@ -34,7 +34,7 @@ export function EventDetail() {
 
           <h3>Characters:</h3>
 
-           {  elevent.characters.map(i=> <p>{i}</p>
+           {  elevent.characters.map(i=> <p key={key++}>{i}</p>
             
          )}
 
@@ -45,14 +45,14 @@ export function EventDetail() {
             height="350"
           />)} */}
         
-          <h4 class="detalle"> {elevent?.description}</h4>
+          <h4 className="detalle"> {elevent?.description}</h4>
         </div>
       )}
 
 
       <Link to="/home/events">
 
-        <button class="botondetail">VOLVER</button>
+        <button className="botondetail">VOLVER</button>
       </Link>
     </div>
   </div>

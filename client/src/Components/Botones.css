@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Press+Start+2P);
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap);
 
 
 .botonver {
@@ -7,24 +7,13 @@
     background-position:center;
     border: none; 
     outline:none;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Roboto', sans-serif;
     color: white;
     background-color: black;
     font-size: medium;
   
   }
 
-  .botoncrearjuego {
-    height:auto;
-    width:auto;
-    background-position:center;
-    border: none; 
-    outline:none;
-    font-family: 'Press Start 2P', cursive;
-    color: white;
-    background-color: black;
-    font-size: medium;
-  }
   button:hover {
     background-color: #5c5a5af7;
     color: white;
@@ -36,7 +25,7 @@
     background-position:center;
     border: none; 
     outline:none;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Roboto', sans-serif;
     color: white;
     background-color: black;
     font-size: medium;
@@ -45,20 +34,6 @@
     right: 50%;
   }
   
-  .botoncrear {
-    height:auto;
-    width:auto;
-    background-position:center;
-    border: none; 
-    outline:none;
-    font-family: 'Press Start 2P', cursive;
-    color: white;
-    background-color: black;
-    font-size: medium;
-    position: absolute;
-    right: 50%;
-    bottom: 10%;
-  }
 
   .botonbuscar {
     height:auto;
@@ -66,7 +41,7 @@
     background-position:center;
     border: none; 
     outline:none;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Roboto', sans-serif;
     color: white;
     background-color: black;
     font-size: medium;
@@ -92,7 +67,8 @@
   }
 
   .loader {
-    background-image:url(./Img/pac-man.gif);
+    /* background-image:url(./Img/pac-man.gif); */
+    background-image:url(https://hips.hearstapps.com/digitalspyuk.cdnds.net/16/05/1454435758-deadpool-ryan-reynolds-sniffs-guns-lol.gif);
     background-repeat:no-repeat;
     height:1031px;
     width: 2062px;
@@ -103,7 +79,7 @@
     background-color: black;
     border: none; 
     outline:none;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Roboto', sans-serif;
     color: white;
     font-size: xx-large;
     border: none; 
@@ -120,7 +96,7 @@
     background-position:center;
     border: none; 
     outline:none;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Roboto', sans-serif;
     color: white;
     background-color: black;
     font-size: medium;
@@ -129,32 +105,3 @@
     
       }
   
-  .elegidos{
-    display: grid;
-    height:auto;
-    width:auto;
-    padding: auto;
-    background-position:center;
-    border: none; 
-    outline:none;
-    font-family: 'Press Start 2P', cursive;
-    color: white;
-    background-color: black;
-    font-size: medium;
-    position: relative;
-  }
-  
-  .borragame {
-    height:auto;
-    width:auto;
-    background-position:center;
-    border: none; 
-    outline:none;
-    font-family: 'Press Start 2P', cursive;
-    color: white;
-    background-color: black;
-    font-size: large;
-    /* position: absolute;
-    right: 50%;
-    bottom: 10%; */
-  }
