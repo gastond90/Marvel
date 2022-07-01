@@ -22,7 +22,7 @@ export function SearchBar () {
     return (
         <div>
             <input type = "search" placeholder="Search characters" onChange={e => handleInputName(e)} />
-            <button class="botonbuscar" type="submit"  onClick={e => handleSubmit(e)}>Buscar</button>
+            <button className="botonbuscar" type="submit"  onClick={e => handleSubmit(e)}>Search</button>
         </div>
     )
 }

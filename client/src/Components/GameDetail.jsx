@@ -20,20 +20,20 @@ export function GameDetail(){
             <div>
             {
                 <div>
-                    <div class="detalle">
+                    <div className="detalle">
                     <h1>{aGame.name}</h1>
                     </div>
                     <img src={aGame.image} alt = "" width="450" height="350"/>
-                    <h3 class="detalle">Géneros: {aGame.genres?.join(",")}</h3>
-                    <h3 class="detalle">Plataformas: {aGame.platforms?.join(",")}</h3>
-                    <h3 class="detalle">Puntaje: {aGame.rating}</h3>
-                    <h3 class="detalle">Lanzamiento: {aGame.released}</h3>
-                    <h4 class="detalle">Descripción: {aGame.description}</h4>
+                    <h3 className="detalle">Géneros: {aGame.genres?.join(",")}</h3>
+                    <h3 className="detalle">Plataformas: {aGame.platforms?.join(",")}</h3>
+                    <h3 className="detalle">Puntaje: {aGame.rating}</h3>
+                    <h3 className="detalle">Lanzamiento: {aGame.released}</h3>
+                    <h4 className="detalle">Descripción: {aGame.description}</h4>
                 </div>    
             }
             
             <Link to = '/home/games'>
-                <button class="botondetail">VOLVER</button>
+                <button className="botondetail">VOLVER</button>
             </Link>
             </div>
             

@@ -1,95 +1,62 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,700,800");
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
 
 body {
-    /* background-image: url("./Img/pacman2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center center; */
-    background-color: #7b7b7b;
-	  text-decoration: none;
-    text-decoration-color: white;
-    height: 100%;
-    width: 100%;
-   
-}
-
-.content-select{
-	max-width: 400px;
-position: relative;
-  display: inline-block;
-  right: 40%;
-  font-size: large;
-}
- 
-.content-select select{
-	
-    left: 675px;
-	width: 100%;
-	cursor: pointer;
-  	padding: 7px 10px;
-  	height: 50px;
-  	outline: 0; 
-  	border: 0;
-	border-radius: 0;
-	background: #000000;
-	color: #7b7b7b;
-	font-size: 1em;
-	color: rgb(255, 255, 255);
-
-	border:2px solid rgba(0,0,0,0.2);
-    position: relative;
-    transition: all 0.25s ease;
-}
- 
-.content-select select:hover{
-	background: #7b7b7b;
-	color: rgb(255, 255, 255);
-}
- 
-.videogames {
-        text-decoration: none;
-        margin: 100px 100px 100px 100px;
-        display: grid;
-    
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: auto;
-    
-	
-		text-decoration: none;
-		color: white;
-		box-shadow: none;
-	
-}
-
-a:link {
-    color: white;
-  }
+  background-color: #dce1e5;
+  font-family: "Montserrat", helvetica, arial, sans-serif;
+  font-size: 14px;
+  color: #cfd6e1;
+  line-height: 1.5;
+  font-weight: 400;
+  overflow-x: hidden;
   
-  a:visited {
-    color: white;
-  }
-  
-  a:hover {
-    color: gray;
-  }
-  
-  a:active {
-    color: white;
-  }
-
-  button:hover{
-  background-color:#7b7b7b
-  }
-
-.imgerr{
-  position: absolute;
-left: 30%;
-top: 45%;
 }
 
-.deleteadores{
-	max-width: 400px;
-position: relative;
-  display: inline-block;
-  right: 0%;
+* {
+  transition: 0.4s;
 }
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  border: 0;
+  cursor: pointer;
+}
+button:focus {
+  outline: 0;
+}
+
+
+
+
+
+h1, h2, h3 {
+  font-family: "Montserrat", helvetica, arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+
+
+.comics{display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 50px;
+margin-right: 100px;
+margin-bottom: 100px;}

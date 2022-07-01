@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { orderByName, getComics } from "../actions";
 import { Link } from "react-router-dom";
-import Card from "./Card";
 import ComicCard from "./ComicCard";
 import { Paginated } from "./Paginated";
 import { SearchByComic } from "./SearchByComic";
 import "./Home.css";
 import "./Botones.css";
 import "./Card.css";
+/* import "./Comics.css"; */
 
 export default function Comics() {
   const dispatch = useDispatch();
@@ -57,38 +57,71 @@ export default function Comics() {
 
   let key = 1;
   return (
-    <div class="home">
-      <div class="home">
+    <div className="comics">
+      <nav class="navv">
+      <h1>COMICS</h1>
+        <ul class="container">
+        <li class="dropdown">
+          <div>
+              <Link to="/home">
+                <button class="bg-gray-1300 hover:bg-gray-400 text-gray-400 font-bold py-2 px-4 ">
+                  HOME
+                </button>
+              </Link>
+              <Link to="/home/events">
+                <button class="bg-gray-1300 hover:bg-gray-400 text-gray-400 font-bold py-2 px-4 ">
+                  EVENTS
+                </button>
+              </Link>
+              <Link to="/home/movies">
+                <button class="bg-gray-1300 hover:bg-gray-400 text-gray-400 font-bold py-2 px-4 ">
+                  MOVIES
+                </button>
+              </Link>
+              <Link to="/home/games">
+                <button class="bg-gray-1300 hover:bg-gray-400 text-gray-400 font-bold py-2 px-4 ">
+                 GAMES
+                </button>
+
+                <div class="inline-flex"></div>
+              </Link>
+            </div>
+          </li>
+
+        </ul>
+        <div>
+        <SearchByComic />
+      </div>
+        
+      </nav>
+
+      <div className="comics">
 
         {/*  <div>
-          <button onClick={(e) => { handleClick(e);}} class= "botonver"> VER JUEGOS </button>
+          <button onClick={(e) => { handleClick(e);}} className= "botonver"> VER JUEGOS </button>
         </div>
         */}
       </div>
 
       <div>
-        <SearchByComic />
-      </div>
-
-      <div>
-        <div class="content-select">
+        {/* <div className="content-select">
           <select onChange={(e) => handleSort(e)}>
             <option hidden={true}>Por Nombre</option>
             <option value="az">A-Z</option>
             <option value="za">Z-A</option>
           </select>
         </div>
-
+ */}
         <Paginated
           videogamesPerPage={videogamesPerPage}
           allVideogames={allComics.length}
 
           paginated={paginated}
         />
-        <div class="videogames">
+        <div>
           {currentVideogames[0] === "NO" ? (
             <img
-              class="imgerr"
+              className="imgerr"
               src="https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg"
               alt=""
               width="630px"
@@ -96,13 +129,13 @@ export default function Comics() {
             />
           ) : allComics[0] === "No existe el juego" ? (
             <img
-              class="imgerr"
+              className="imgerr"
               src="https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg"
               alt=""
             />
           ) : currentVideogames.length === 0 ? (
             <div>
-              <button class="loader">LOADING...</button>
+              <button className="loader">LOADING...</button>
             </div>
           ) : (
             currentVideogames &&
@@ -110,9 +143,9 @@ export default function Comics() {
             currentVideogames.map((e) => {
               return (
                 <div key={key++}>
-                  <Link class="card" key={key++} to={`/home/comic/${e.id}`}>
-                    <Card
-                      class="card"
+                  <Link className="card" key={key++} to={`/home/comic/${e.id}`}>
+                    <ComicCard
+                      className="card"
                       key={key++}
                       name={e.title}
                       image={e.image}

@@ -18,7 +18,7 @@ export function FilterByGenre(){
     }, [dispatch]);
 
     return (
-        <div class="content-select">
+        <div className="content-select">
              <select onChange = {(e) => handleChange(e)}>
              <option hidden={true}>Géneros</option>
                         {genres.map((e) => (

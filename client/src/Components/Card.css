@@ -1,6 +1,7 @@
 .card {
     text-decoration: none;
     text-decoration-color: white;
+    
   }
 
   .picture{
@@ -9,3 +10,45 @@
     border-color: white;
     border-radius:4px;
   }
+
+  @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,300italic,400italic,600italic,700italic,800italic);
+body {
+  /* background: linear-gradient(rgba(30, 27, 38, 0.95), rgba(30, 27, 38, 0.95)); */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container {
+    width:450px;
+  height: 100%;
+}
+
+.cellphone-container {
+  width: 250px;
+  height: 450px;
+  background-color: #1e1b26;
+  margin: 60px auto 0 auto;
+  box-shadow: 5px 5px 115px -14px black;
+  border-radius: 4px;
+}
+
+
+
+h1, h2, h3, h4, h5 {
+  font-family: "Montserrat", sans-serif;
+  color: #e7e7e7;
+  margin: 0px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 400;
+  color: rgb(173, 167, 167)
+}
+
+h3 {
+  font-size: 14px;
+  font-weight: 400;
+  color: #dacdcd;
+}

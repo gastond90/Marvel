@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getMovieDetail } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
-import "./Detail.css";
+import "./MovieDetail.css";
 import "./Botones.css";
 
 export function MovieDetail() {
@@ -11,72 +11,71 @@ export function MovieDetail() {
   const { id } = useParams();
   const lapeli = useSelector((state) => state.detail);
 
-  console.log("DETALLE", lapeli);
-
   useEffect(() => {
     dispatch(getMovieDetail(id));
   }, []);
 
+  let key = 1;
+
+  console.log("ELID", lapeli);
+
   return (
     <div>
-      <div>
-        <h1>MOVIE DETAIL</h1>
-        {lapeli.image && (
-          <div key={lapeli.id}>
-            <h1>{lapeli?.title}</h1>
+      
+      <h1>MOVIE DETAIL</h1>
 
+      {lapeli.image &&  (
+        <div key={lapeli.id}>
+          <div class="cardpeli">
+            <div class="cardpeli_left">
+              <img src={lapeli.image} />
+            </div>
+            <div class="cardpeli_right">
+              <h1>{lapeli?.title}</h1>
+              <h3>
+                Rating: {""}
+                {lapeli.rating}
+              </h3>
+              <div class="cardpeli_right__details">
+                <ul>
+                  <li>{lapeli.year}</li>
+                  <li>{lapeli.runtime}</li>
+                  <li>{lapeli.genres.join(",")}</li>
+                </ul>
 
-            <img src={`${lapeli.image}`} alt="" width="450" height="350" />
-
-            <h3>Cast:</h3>
-
-            {lapeli.cast.map((i) => (
-              <p>{i}</p>
-            ))}
-
-            <h3>Director:{lapeli.directors}</h3>
-
-            {lapeli.images.map((i) => (
-              <img src={i} alt="" width="75" height="75" />
-            ))}
-            <p>{lapeli.plot}</p>
-
-            <h4 class="detalle"> {lapeli?.description}</h4>
+                <div class="cardpeli_right__review">
+                  <h5>{lapeli?.plot}</h5>
+                  <h5>Director:{lapeli.directors}</h5>
+                </div>
+              </div>
+            </div>
           </div>
-        )}
+        </div>
+      )}
 
-        <h3>Trailer:</h3>
+      <h3></h3>
 
-        <video src={lapeli.trailer} width="640" height="480"></video>
+      <video src={lapeli.trailer} width="640" height="480"></video>
 
-
-            <img src={`${lapeli.image}`} alt="" width="450" height="350" />
-
-            <h3>Cast:</h3>
-         
-            {lapeli.cast.map((i) => (
-              <p>{i}</p>
-            ))}
-
-            <h3>Director:{lapeli.directors}</h3>
-
-            {lapeli.images.map((i) => (
-              <img src={i} alt="" width="75" height="75" />
-            ))}
-            <p>{lapeli.plot}</p>
-
-            <h4 class="detalle"> {lapeli?.description}</h4>
-          </div>
-        )}
-
-        <h3>Trailer:</h3>
-
-        <video src={lapeli.trailer} width="640" height="480"></video>
-
-        <Link to="/home/movies">
-          <button class="botondetail">VOLVER</button>
-        </Link>
+     
+      <div className="cast">
+      <h1>Cast:</h1>
+        {lapeli.cast?.map((i) => (
+          <h4 style={{ color: "white" }}>{i}</h4>
+        ))}
       </div>
+      
+      {lapeli.images && 
+      <div className="pics">
+        <h1>Pics:</h1>
+        {lapeli.images.map((i) => (
+          <img src={i} key={key++} alt="" width="118" height="78" />
+        ))}
+      </div>}
+
+      <Link to="/home/events">
+        <button class="botondetail">VOLVER</button>
+      </Link>
     </div>
   );
 }

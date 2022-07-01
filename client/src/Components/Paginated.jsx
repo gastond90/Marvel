@@ -9,12 +9,12 @@ export function Paginated ({videogamesPerPage, allVideogames, paginated}){
     };
 
     return (
-        <nav>
-            <section class="paginacion">
+        <nav className="pag">
+            <section className="paginacion">
             <ul>
                 {pageNumber && pageNumber.map(n => (
                     <li key = {n} >
-                        <a class="active" onClick={()=> paginated(n)}>{n}</a>
+                        <a className="active" onClick={()=> paginated(n)}>{n}</a>
                     </li>
                 ))}                              
             </ul>

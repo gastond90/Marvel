@@ -56,22 +56,49 @@ export default function Games() {
 
   let key = 1;
   return (
-    <div class="home">
+    <div className="comics">
+      <nav class="navv">
+        <h1>GAMES</h1>
+        <ul class="container">
+          <li class="dropdown">
+            <div>
+              <Link to="/home/comics">
+                <button class="bg-gray-1300 hover:bg-gray-400 text-gray-400 font-bold py-2 px-4 ">
+                  COMICS
+                </button>
+              </Link>
+              <Link to="/home/events">
+                <button class="bg-gray-1300 hover:bg-gray-400 text-gray-400 font-bold py-2 px-4 ">
+                  EVENTS
+                </button>
+              </Link>
+              <Link to="/home/movies">
+                <button class="bg-gray-1300 hover:bg-gray-400 text-gray-400 font-bold py-2 px-4 ">
+                  MOVIES
+                </button>
+              </Link>
+              <Link to="/home">
+                <button class="bg-gray-1300 hover:bg-gray-400 text-gray-400 font-bold py-2 px-4 ">
+                  HOME
+                </button>
 
-      <h1>GAMES</h1>
-      <div class="home">
+                <div class="inline-flex"></div>
+              </Link>
+            </div>
+          </li>
+          <h5>Marvel App</h5>
+          Ton Duba 2022☕
+        </ul>
+      </nav>
+      <div className="comics">
         {/*  <div>
-          <button onClick={(e) => { handleClick(e);}} class= "botonver"> VER JUEGOS </button>
+          <button onClick={(e) => { handleClick(e);}} className= "botonver"> VER JUEGOS </button>
         </div>
         */}
       </div>
 
-      {/*   <div>
-        <SearchByComic />
-      </div> */}
-
       <div>
-        {/* <div class="content-select">
+        {/* <div className="content-select">
           <select onChange={(e) => handleSort(e)}>
             <option hidden={true}>Por Nombre</option>
             <option value="az">A-Z</option>
@@ -84,10 +111,10 @@ export default function Games() {
           allVideogames={allGames.length}
           paginated={paginated}
         />
-        <div class="videogames">
+        <div>
           {currentVideogames[0] === "NO" ? (
             <img
-              class="imgerr"
+              className="imgerr"
               src="https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg"
               alt=""
               width="630px"
@@ -95,28 +122,39 @@ export default function Games() {
             />
           ) : allGames[0] === "No existe el juego" ? (
             <img
-              class="imgerr"
+              className="imgerr"
               src="https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg"
               alt=""
             />
           ) : currentVideogames.length === 0 ? (
             <div>
-              <button class="loader">LOADING...</button>
+              <button className="loader">LOADING...</button>
             </div>
           ) : (
             currentVideogames &&
             currentVideogames.map((e) => {
               return (
                 <div key={key++}>
-                  <Link class="card" key={e.id} to={`/home/game/${e.id}`}>
+                  <Link
+                    /* className="card" */ key={e.id}
+                    to={`/home/game/${e.id}`}
+                  >
                     <GameCard
-                      class="card"
+                      /* className="card" */
                       key={e.id}
                       name={e.name}
                       image={e.image}
-                      genre={e.genres?.join(",")}
-                      platforms={e.platforms?.join(",")}
+                      /* genre={e.genres.map((i) => (
+                        <h5 key={key++}>{i}</h5>
+                      ))} */
+
+                      genre={e.genres}
+                      /* platforms={e.platforms.map((i) => (
+                        <h5 key={key++}>{i}</h5>
+                      ))} */
+                      platforms={e.platforms}
                       rating={e.rating}
+                      description={e.description}
                     />
                   </Link>
                 </div>
