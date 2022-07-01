@@ -9,7 +9,7 @@ import { SearchByComic } from "./SearchByComic";
 import "./Home.css";
 import "./Botones.css";
 import "./Card.css";
-/* import "./Comics.css"; */
+
 
 export default function Comics() {
   const dispatch = useDispatch();
