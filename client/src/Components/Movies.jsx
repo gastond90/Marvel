@@ -113,17 +113,20 @@ export default function Movies() {
           {currentVideogames[0] === "NO" ? (
             <img
               className="imgerr"
-              src="https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg"
+              src="https://c.tenor.com/Jar7MovEXPoAAAAC/deadpool-omg.gif"
               alt=""
               width="630px"
               height="630px"
             />
           ) : allMovies[0] === "No existe el juego" ? (
+            <div>
+            <h1>NOT FOUND</h1>
             <img
               className="imgerr"
-              src="https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg"
+              src="https://c.tenor.com/Jar7MovEXPoAAAAC/deadpool-omg.gif"
               alt=""
             />
+            </div>
           ) : currentVideogames.length === 0 ? (
             <div>
               <button className="loader">LOADING...</button>

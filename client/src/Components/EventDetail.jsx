@@ -5,6 +5,7 @@ import {getEventDetail} from "../actions";
 import { useDispatch, useSelector } from "react-redux";
 import "./Detail.css";
 import "./Botones.css";
+import "./MovieDetail.css";
 
 export function EventDetail() {
   const dispatch = useDispatch();
@@ -19,42 +20,47 @@ export function EventDetail() {
 
   return (
     <div>
-    <div>
-      <h1>EVENT DETAIL</h1>
-      {elevent.thumbnail && (
-        <div key={elevent.id}>
-          <h1>{elevent?.name}</h1>
 
-          <img
-            src={`${elevent?.thumbnail.path}.${elevent?.thumbnail.extension}`}
-            alt=""
-            width="450"
-            height="350"
-          />
+<h1>EVENT DETAIL</h1>
 
-          <h3>Characters:</h3>
+{elevent.thumbnail && (
+  <div key={elevent.id}>
+    <div class="cardpeli">
+      <div class="cardpeli_left">
+        <img src={`${elevent?.thumbnail.path}.${elevent?.thumbnail.extension}`} alt=""
+            /* width="439" 
+            height="439" *//>
+      </div>
+      <div class="cardpeli_right">
+        <h1 className="hevent">{elevent?.name}</h1>
+       
+        <div class="cardpeli_right__details">
 
-           {  elevent.characters.map(i=> <p key={key++}>{i}</p>
-            
-         )}
-
-     {/*  {  elevent.images.map(i=> <img
-            src={`${elevent?.images[0].path}.${elevent?.images[0].extension}`}
-            alt=""
-            width="450"
-            height="350"
-          />)} */}
-        
-          <h4 className="detalle"> {elevent?.description}</h4>
+          <div class="cardpeli_right__review">
+            <h6 className="desc">{elevent?.description}</h6>
+           
+          </div>
         </div>
-      )}
-
-
-      <Link to="/home/events">
-
-        <button className="botondetail">VOLVER</button>
-      </Link>
+      </div>
     </div>
+  </div>
+)}
+
+<h3></h3>
+
+<div className="eve">
+      <h1>Characters:</h1>
+        {elevent.characters?.map((i) => (
+          <h4 style={{ color: "white" }}>{i}</h4>
+        ))}
+      </div>
+
+<Link to="/home/events">
+  <button class="botondetail">BACK</button>
+</Link>
+
+
+    
   </div>
   );
 }

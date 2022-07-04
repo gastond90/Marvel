@@ -59,40 +59,8 @@ export default function Home() {
   let key = 1;
 
   return (
+    
     <div className="home">
-
-      
-
-
-{/* <div class="min-h-screen grid place-items-center font-mono bg-gray-900">
-
-  <div class="bg-white rounded-md bg-gray-800 shadow-lg">
-    <div class="md:flex px-4 leading-none max-w-4xl">
-      <div class="flex-none ">
-        <img src="https://creativereview.imgix.net/content/uploads/2019/12/joker_full.jpg?auto=compress,format&q=60&w=1012&h=1500" alt="pic" class="h-72 w-56 rounded-md shadow-2xl transform -translate-y-4 border-4 border-gray-300 shadow-lg" />
-      </div>
-
-      <div class="flex-col text-gray-300">
-
-        <p class="pt-4 text-2xl font-bold"> Joker (2020)</p>
-        <hr class="hr-text" data-content=""/>
-        <div class="text-md flex justify-between px-4 my-2">
-          <span class="font-bold">2h 2min | Crime, Drama, Thriller</span>
-          <span class="font-bold"></span>
-        </div>
-        <p class="hidden md:block px-4 my-4 text-sm text-left">In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker. </p>
-
-        <p class="flex text-md px-4 my-2">
-          Rating: 9.0/10
-          <span class="font-bold px-2">|</span>
-          Mood: Dark
-        </p>
-
-      </div></div></div></div> */}
-
-
-
-
 
       <nav class="navv">
       <h1>CHARACTERS</h1>
@@ -120,8 +88,10 @@ export default function Home() {
                  GAMES
                 </button>
 
+
                 <div class="inline-flex"></div>
               </Link>
+              <SearchBar />
             </div>
           </li>
           
@@ -129,7 +99,7 @@ export default function Home() {
              Ton Duba 2022☕
         </ul>
         <div>
-        <SearchBar />
+        
       </div>
       
       </nav>
@@ -145,7 +115,10 @@ export default function Home() {
             <option value="za">Z-A</option>
           </select>
         </div>
+        
       </div>
+
+      
 
       <Paginated
         videogamesPerPage={videogamesPerPage}
@@ -153,23 +126,25 @@ export default function Home() {
         paginated={paginated}
       />
       
-
-      
       <div >
         {currentVideogames[0] === "NO" ? (
+          <div>
+         <h1>NO RESULTS FOUND❌</h1>
           <img
             className="imgerr"
-            src="https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg"
+            src="https://c.tenor.com/Jar7MovEXPoAAAAC/deadpool-omg.gif"
             alt=""
-            width="630px"
-            height="630px"
           />
+          </div>
         ) : allVideogames[0] === "No existe el juego" ? (
+          <div>
+          <h1>NO RESULTS FOUND❌</h1>
           <img
             className="imgerr"
-            src="https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg"
+            src="https://c.tenor.com/Jar7MovEXPoAAAAC/deadpool-omg.gif"
             alt=""
           />
+          </div>
         ) : currentVideogames.length === 0 ? (
           <div>
             <button className="loader">LOADING...</button>
@@ -197,6 +172,7 @@ export default function Home() {
           })
         )}
       </div>
+      {/* <Footer /> */}
     </div>
   );
 }
