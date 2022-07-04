@@ -31,7 +31,7 @@ body .cardpeli_left {
 }
 body .cardpeli_left img {
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 10px 0 0 10px;
   -webkit-border-radius: 10px 0 0 10px;
   -moz-border-radius: 10px 0 0 10px;
@@ -111,22 +111,7 @@ body
   ~ label {
   color: #ffd700;
 }
-body .cardpeli_right__rating__stars .rating > input:checked + label:hover,
-body .cardpeli_right__rating__stars .rating > input:checked ~ label:hover,
-body
-  .cardpeli_right__rating__stars
-  .rating
-  > label:hover
-  ~ input:checked
-  ~ label,
-body
-  .cardpeli_right__rating__stars
-  .rating
-  > input:checked
-  ~ label:hover
-  ~ label {
-  color: #ffed85;
-}
+
 body .cardpeli_right__review p {
   color: white;
   font-family: "Montserrat", sans-serif;
@@ -189,3 +174,19 @@ body .cardpeli_right__button a:hover {
     grid-gap: none;
   }
   
+
+  .eve {
+    margin-top: 485px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: none;
+  }
+
+  .desc{color:white}
+
+  .hevent{color:red !important}
+  
+  .gam{margin-top: 555px;
+    color:white}
+
+    .fotopj{height: 350px !important; width: 350px !important;}

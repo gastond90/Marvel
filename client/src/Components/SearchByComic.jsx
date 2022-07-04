@@ -22,7 +22,7 @@ export function SearchByComic () {
     return (
         <div>
             <input type = "search" placeholder="Search comics" onChange={e => handleInputName(e)} />
-            <button className="botonbuscar" type="submit"  onClick={e => handleSubmit(e)}>Buscar</button>
+            <button className="botonbuscar" type="submit"  onClick={e => handleSubmit(e)}>Search</button>
         </div>
     )
 }

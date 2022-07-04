@@ -1,43 +1,54 @@
-import React from 'react';
-import {useEffect} from 'react';
-import {useParams, Link} from 'react-router-dom';
-import {getGameDetail} from '../actions';
-import {useDispatch, useSelector} from "react-redux";
-import "./Detail.css"
-import "./Botones.css"
+import React from "react";
+import { useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import { getGameDetail } from "../actions";
+import { useDispatch, useSelector } from "react-redux";
+import "./Detail.css";
+import "./Botones.css";
+import "./MovieDetail.css";
 
-export function GameDetail(){
-    const dispatch = useDispatch();
-    const {id} = useParams();
-    const aGame = useSelector((state) => state.detail);
+export function GameDetail() {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const aGame = useSelector((state) => state.detail);
 
-    useEffect(() => { 
-        dispatch(getGameDetail(id));
-    },[]);
+  useEffect(() => {
+    dispatch(getGameDetail(id));
+  }, []);
 
-    return(
-        <div>
-            <div>
-            {
-                <div>
-                    <div className="detalle">
-                    <h1>{aGame.name}</h1>
-                    </div>
-                    <img src={aGame.image} alt = "" width="450" height="350"/>
-                    <h3 className="detalle">Géneros: {aGame.genres?.join(",")}</h3>
-                    <h3 className="detalle">Plataformas: {aGame.platforms?.join(",")}</h3>
-                    <h3 className="detalle">Puntaje: {aGame.rating}</h3>
-                    <h3 className="detalle">Lanzamiento: {aGame.released}</h3>
-                    <h4 className="detalle">Descripción: {aGame.description}</h4>
-                </div>    
-            }
-            
-            <Link to = '/home/games'>
-                <button className="botondetail">VOLVER</button>
-            </Link>
+  return (
+    <div>
+      {aGame.image && (
+        <div key={aGame.id}>
+          <div class="cardpeli">
+            <div class="cardpeli_left">
+              <img src={aGame.image} alt="" /* width="250" height="350" */ />
             </div>
-            
-        </div>
-    )
+            <div class="cardpeli_right">
+              <h1 className="hevent">{aGame?.name}</h1>
 
+              <div class="cardpeli_right__details">
+                <h3 className="detalle">Genres: {aGame.genres?.join(",")}</h3>
+                <h3 className="detalle">
+                  Platforms: {aGame.platforms?.join(",")}
+                </h3>
+                <h3 className="detalle">Rating: {aGame.rating}</h3>
+                <h3 className="detalle">Released: {aGame.released}</h3>
+
+                <div class="cardpeli_right__review"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <h3></h3>
+
+      <h4 className="gam">{aGame?.description}</h4>
+
+      <Link to="/home/games">
+        <button class="botondetail">BACK</button>
+      </Link>
+    </div>
+  );
 }

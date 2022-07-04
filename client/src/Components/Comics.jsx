@@ -85,12 +85,13 @@ export default function Comics() {
 
                 <div class="inline-flex"></div>
               </Link>
+              <SearchByComic />
             </div>
           </li>
 
         </ul>
         <div>
-        <SearchByComic />
+       
       </div>
         
       </nav>
@@ -120,19 +121,23 @@ export default function Comics() {
         />
         <div>
           {currentVideogames[0] === "NO" ? (
+            <div>
+            <h1>NO RESULTS FOUND❌</h1>
             <img
               className="imgerr"
-              src="https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg"
+              src="https://c.tenor.com/Jar7MovEXPoAAAAC/deadpool-omg.gif"
               alt=""
-              width="630px"
-              height="630px"
             />
+            </div>
           ) : allComics[0] === "No existe el juego" ? (
-            <img
-              className="imgerr"
-              src="https://i.pinimg.com/736x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg"
-              alt=""
-            />
+            <div>
+          <h1>NO RESULTS FOUND❌</h1>
+          <img
+            className="imgerr"
+            src="https://c.tenor.com/Jar7MovEXPoAAAAC/deadpool-omg.gif"
+            alt=""
+          />
+          </div>
           ) : currentVideogames.length === 0 ? (
             <div>
               <button className="loader">LOADING...</button>

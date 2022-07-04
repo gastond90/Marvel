@@ -31,7 +31,7 @@ export function MovieDetail() {
               <img src={lapeli.image} />
             </div>
             <div class="cardpeli_right">
-              <h1>{lapeli?.title}</h1>
+              <h1 className="hevent">{lapeli?.title}</h1>
               <h3>
                 Rating: {""}
                 {lapeli.rating}
@@ -73,8 +73,8 @@ export function MovieDetail() {
         ))}
       </div>}
 
-      <Link to="/home/events">
-        <button class="botondetail">VOLVER</button>
+      <Link to="/home/movies">
+        <button class="botondetail">BACK</button>
       </Link>
     </div>
   );
